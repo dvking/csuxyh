@@ -3,6 +3,8 @@
 /**
   * wechat php test
   */
+  
+  //dvking
 define("TOKEN", "testfrowczhemenan");
 
 define("DBHOST","127.0.0.1");
