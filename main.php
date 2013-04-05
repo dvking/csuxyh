@@ -4,7 +4,7 @@
   * wechat php test
   */
 
-//dvkink
+
 
 define("TOKEN", "testfrowczhemenan");
 
