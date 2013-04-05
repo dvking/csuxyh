@@ -3,7 +3,7 @@
 /**
   * wechat php test
   */
-  //test
+  //testkdsfjaksjksd
 define("TOKEN", "testfrowczhemenan");
 
 define("DBHOST","127.0.0.1");
