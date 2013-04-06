@@ -147,7 +147,7 @@ class wechatCallbackapiTest
 			$des1 = "Description one";
 			$picUrl1 = "http://www.likemeili.com/wx/test/img/pic1.jpg";
 			$url1 = "http://www.likemeili.com/wx/test/img/pic1.jpg";
-			$title2 = "Title Two";
+			$title2 = "查看好友";
 			$des2 = "Description two";
 			$picUrl2 = "http://www.likemeili.com/wx/test/img/pic2.jpg";
 			$url2 = "http://www.likemeili.com/wx/test/img/pic2.jpg";
