@@ -149,8 +149,8 @@ class wechatCallbackapiTest
 			$url1 = "http://www.likemeili.com/wx/test/img/pic1.jpg";
 			$title2 = "查看好友";
 			$des2 = "Description two";
-			$picUrl2 = "http://www.likemeili.com/wx/test/viewfri.html";
-			$url2 = "http://www.likemeili.com/wx/test/img/pic2.jpg";
+			$picUrl2 = "http://www.likemeili.com/wx/test/img/pic2.jpg";
+			$url2 = "http://www.likemeili.com/wx/test/viewfri.html";
 		}
         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, 
         				$title1, $des1, $picUrl1, $url1, $title2, $des2, $picUrl2, $url2);
