@@ -1,5 +1,5 @@
 ﻿<?php
-
+require_once dirname(__FILE__) . './common/global.php';
 /**
   * wechat php test
   */
@@ -36,7 +36,6 @@ class wechatCallbackapiTest
         }
     }
 	
-	
 
     public function responseMsg()
     {
@@ -48,179 +47,15 @@ class wechatCallbackapiTest
 		if (!empty($postStr)){
                 
               	$postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
-				$msgtyp = $postObj->MsgType;
-				$ret = "";
-				MyLog("msgtyp:" . $msgtyp);
-				switch($msgtyp){
-					case "text":
-						$ret = $this->handleMsgText($postObj);
-						break;
-					case "event":
-						$ret = $this->handleMsgEvent($postObj);
-						break;
-					case "link":
-						$ret = $this->handleMsgLink($postObj);
-						break;
-					default:
-						$ret = "";
-				}
-				echo $ret  ;
+              	$csuxyh = new CSUXYH($postObj);
+              	$ret = $csuxyh->process();
+              	echo $ret;
+				
         }else {
         	echo "";
         	exit;
         }
     }
-	
-	public function handleMsgOther($obj){
-		$postObj = $obj;
-		$fromUsername = $postObj->FromUserName;
-        $toUsername = $postObj->ToUserName;
-        $keyword = trim($postObj->Content);
-        $time = time();
-        $textTpl = "<xml>
-				<ToUserName><![CDATA[%s]]></ToUserName>
-				<FromUserName><![CDATA[%s]]></FromUserName>
-				<CreateTime>%s</CreateTime>
-				<MsgType><![CDATA[%s]]></MsgType>
-				<Content><![CDATA[%s]]></Content>
-				<FuncFlag>0</FuncFlag>
-				</xml>";  
-		$msgType = "text";
-        $contentStr = MMSGOTHERNOTE;
-        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-        return $resultStr;
-	}
-	
-	public function handleMsgText($obj){
-		$postObj = $obj;
-		$fromUsername = $postObj->FromUserName;
-        $toUsername = $postObj->ToUserName;
-        $keyword = trim($postObj->Content);
-        $time = time();
-        $textTpl = "<xml>
-				<ToUserName><![CDATA[%s]]></ToUserName>
-				<FromUserName><![CDATA[%s]]></FromUserName>
-				<CreateTime>%s</CreateTime>
-				<MsgType><![CDATA[%s]]></MsgType>
-				<Content><![CDATA[%s]]></Content>
-				<FuncFlag>0</FuncFlag>
-				</xml>";  
-		$msgType = "text";
-        $contentStr = $this->handleMsgTest($keyword, $fromUsername);
-        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-        return $resultStr;
-	}
-	
-	public function handleMsgEvent($obj){
-		MyLog("handleMsgEvent");
-		$postObj = $obj;
-		$fromUsername = $postObj->FromUserName;
-        $toUsername = $postObj->ToUserName;
-        //$keyword = trim($postObj->Content);
-		$event = $postObj->Event;
-        $time = time();
-        $textTpl = 	"<xml>
- 					 <ToUserName><![CDATA[%s]]></ToUserName>
-					 <FromUserName><![CDATA[%s]]></FromUserName>
-					 <CreateTime>%s</CreateTime>
-					 <MsgType><![CDATA[%s]]></MsgType>
-					 <ArticleCount>1</ArticleCount>
-					 <Articles>
-					 <item>
-					 <Title><![CDATA[%s]]></Title> 
-					 <Description><![CDATA[%s]]></Description>
-					 <PicUrl><![CDATA[%s]]></PicUrl>
-					 <Url><![CDATA[%s]]></Url>
-					 </item>
-					 </Articles>
-					 <FuncFlag>1</FuncFlag>
-					 </xml> ";  
-		$msgType = "news";
-		if ($event == "subscribe"){
-			$title1 = "Title One";
-			$des1 = "Description one";
-			$picUrl1 = "http://www.likemeili.com/wx/test/img/pic1.jpg";
-			$url1 = "http://www.likemeili.com/wx/test/img/pic1.jpg?user=llll";
-			$title2 = "查看好友";
-			$des2 = "Description two";
-			$picUrl2 = "http://www.likemeili.com/wx/test/img/pic2.jpg";
-			$url2 = "http://www.likemeili.com/wx/test/viewfri.html";
-		}
-        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, 
-        				$title1, $des1, $picUrl1, $url1);
-        return $resultStr;
-	}
-	
-	public function handleMsgLink($obj){
-		MyLog("handleMsgLink");
-		$postObj = $obj;
-		$fromUsername = $postObj->FromUserName;
-		$toUsername = $postObj->ToUserName;
-		//$keyword = trim($postObj->Content);
-		//$event = $postObj->Event;
-		$time = time();
-		$textTpl = 	"<xml>
-		<ToUserName><![CDATA[%s]]></ToUserName>
-		<FromUserName><![CDATA[%s]]></FromUserName>
-		<CreateTime>%s</CreateTime>
-		<MsgType><![CDATA[%s]]></MsgType>
-		<ArticleCount>2</ArticleCount>
-		<Articles>
-		<item>
-		<Title><![CDATA[%s]]></Title>
-		<Description><![CDATA[%s]]></Description>
-		<PicUrl><![CDATA[%s]]></PicUrl>
-		<Url><![CDATA[%s]]></Url>
-		</item>
-		<item>
-		<Title><![CDATA[%s]]></Title>
-		<Description><![CDATA[%s]]></Description>
-		<PicUrl><![CDATA[%s]]></PicUrl>
-		<Url><![CDATA[%s]]></Url>
-		</item>
-		</Articles>
-		<FuncFlag>1</FuncFlag>
-		</xml> ";
-		$msgType = "news";
-		//if ($event == "subscribe"){
-			$title1 = "Link One";
-			$des1 = "Description one";
-			$picUrl1 = "http://www.likemeili.com/wx/test/img/pic1.jpg";
-			$url1 = "http://www.likemeili.com/wx/test/img/pic1.jpg";
-			$title2 = "查看好友";
-			$des2 = "Description two";
-			$picUrl2 = "http://www.likemeili.com/wx/test/img/pic2.jpg";
-			$url2 = "http://www.likemeili.com/wx/test/viewfri.html";
-		//}
-		$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType,
-				$title1, $des1, $picUrl1, $url1, $title2, $des2, $picUrl2, $url2);
-		return $resultStr;
-	}
-	
-
-	public function handleMsgTest($req, $fromUser){
-		$ret = '';
-		switch($req){
-			//查看最新
-			case CREATEACTIVE:	
-				$ret = $this->handleViewNew($fromUser);
-				break;
-			//自己写错过
-			case RIT:
-				$ret = $this->handleShowActivity();
-				break;
-			//查看好友
-			case VIEWFRIEND:
-				$ret = VIEWFRIEND1NOTE;
-				$this->updateUserState($fromUser, VIEWFRIENDINPUT);
-				break;
-			default:
-				$ret = $this->handleContent($req, $fromUser);
-		}
-		return $ret;
-	}
-
-	
 
 	
 	private function checkSignature()
