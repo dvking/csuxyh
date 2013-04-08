@@ -6,10 +6,7 @@
 
 //hhhh
 
-define("TOKEN", "testfrowczhemenan");
 
-define("MAINLIST","---------------\n1.回复crr发布活动信息\n2.回复chh查询活动信息\n");
-define("GUANZHUNOTE","中南大学校友会欢迎您！中南大学校友会为深圳地区校友提供活动、交友信息。感谢您的参与！\n" . MAINLIST);
 
 function MyLog($str){
 		$file = fopen("out.log","a+");
