@@ -1,6 +1,7 @@
 <?php
-require_once dirname(__FILE__) . "./common.php";
-require_once dirname(__FILE__) . "./class/NewsHelper.php";
+require_once dirname(__FILE__) . "/common.php";
+require_once dirname(__FILE__) . "/class/NewsHelper.php";
+require_once dirname(__FILE__) . "/common/MiniLog.php";
 
 /**
  * 
@@ -14,6 +15,7 @@ class CSUXYH{
 	}
 	
 	public function process(){
+		Debug( __FUNCTION__);
 		$obj = $this->postObj;
 		$msgtyp = $obj->MsgType;
 		$ret = "";
@@ -35,6 +37,7 @@ class CSUXYH{
 	}
 	
 	public function handleMsgOther($obj){
+		Debug( __FUNCTION__);
 		$postObj = $obj;
 		$fromUsername = $postObj->FromUserName;
 		$toUsername = $postObj->ToUserName;
@@ -48,6 +51,7 @@ class CSUXYH{
 	}
 	
 	public function handleMsgText($obj){
+		Debug( __FUNCTION__);
 		$postObj = $obj;
 		$fromUsername = $postObj->FromUserName;
 		$toUsername = $postObj->ToUserName;
@@ -61,7 +65,7 @@ class CSUXYH{
 	}
 	
 	public function handleMsgEvent($obj){
-		MyLog("handleMsgEvent");
+		Debug( __FUNCTION__);
 		$postObj = $obj;
 		$fromUsername = $postObj->FromUserName;
 		$toUsername = $postObj->ToUserName;
@@ -91,6 +95,7 @@ class CSUXYH{
 	}
 	
 	public function handleMsgTest($req, $fromUser){
+		Debug( __FUNCTION__);
 		$ret = '';
 		switch($req){
 			//查看最新
