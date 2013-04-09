@@ -7,4 +7,6 @@ $sql = "select * from wx_csuxyh_act";
 $rs = $dbo->query($sql);
 $array = $dbo->fetch($rs);
 Debug($array[1][1]);
+
+//xiecan
 ?>
