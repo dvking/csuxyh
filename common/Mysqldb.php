@@ -1,7 +1,7 @@
 <?php
 
-require_once dirname(__FILE__).'/global.php';
-
+require_once dirname(__FILE__) . '/global.php';
+require_once dirname(__FILE__) . '/globalfunc.php';
 /**
  * @author Lenovo
  *
@@ -18,8 +18,8 @@ class Mysqldb {
     private $_fecthMode;
     
     //构造函数初始化连接数据
-	public function  _construct($dbKey , $fetchMode = DB_FETCH_DEFAULT){
-		$this->_dbKey = $dbKey;
+	public function  __construct($dbKey , $fetchMode = DB_FETCH_DEFAULT){
+		$this->_dbKey = $SQLCONN[$dbKey];
 		$this->_fecthMode = $fetchMode;
 	}
 	

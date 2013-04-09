@@ -60,14 +60,15 @@ define("ITEMTPL","	<item>
 
 
 //数据库连接
-$SQLCONN= array(
-				'HOST' => '****',
-				'DBNAME' => '**',
-				'USER' => '***',
-				'PASSWD' => '***',
-				'PORT' => 23
-            );
-
+$SQLCONN = array(
+		'CSUXYH' => array(
+				'HOST' => '199.193.255.110',
+				'DBNAME' => 'csuxyh',
+				'USER' => 'pkkqkk',
+				'PASSWD' => '789uioJKL',
+				'PORT' => 3306
+		)
+);
 
 
 
