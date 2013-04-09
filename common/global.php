@@ -59,7 +59,14 @@ define("ITEMTPL","	<item>
 					</item>");
 
 
-
+//数据库连接
+$SQLCONN= array(
+				'HOST' => '****',
+				'DBNAME' => '**',
+				'USER' => '***',
+				'PASSWD' => '***',
+				'PORT' => 23
+            );
 
 
 
