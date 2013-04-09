@@ -1,6 +1,7 @@
 ﻿<?php
 require_once dirname(__FILE__) . '/common/global.php';
 require_once dirname(__FILE__) . '/common/globalfunc.php';
+require_once dirname(__FILE__) . "/CSUXYH.php";
 /**
   * wechat php test
   */
@@ -15,7 +16,6 @@ class wechatCallbackapiTest
 {
 	public function valid()
     {
-		MyLog("valid");
         $echoStr = $_GET["echostr"];
 
         //valid signature , option
@@ -37,7 +37,7 @@ class wechatCallbackapiTest
 
       	//extract post data
 		if (!empty($postStr)){
-                
+				Debug("postStr not empty");
               	$postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
               	$csuxyh = new CSUXYH($postObj);
               	$ret = $csuxyh->process();
