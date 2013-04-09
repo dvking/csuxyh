@@ -1,7 +1,7 @@
 <?php
 require_once dirname(__FILE__) . '/common/DBFactory.php';
-echo "»¶Ó­Äú£º" . $_POST["username"];
-
+echo "æ¬¢è¿Žæ‚¨" . $_POST["username"];
+//dvking
 $dbo = DbFactory::getInstance();
 $sql = "select * from wx_csuxyh_act";
 $rs = $dbo->query($sql);
