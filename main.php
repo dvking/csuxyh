@@ -1,20 +1,12 @@
 ﻿<?php
-require_once dirname(__FILE__) . './common/global.php';
+require_once dirname(__FILE__) . '/common/global.php';
+require_once dirname(__FILE__) . '/common/globalfunc.php';
 /**
   * wechat php test
   */
 
-//hhhh
 
-
-
-function MyLog($str){
-		$file = fopen("out.log","a+");
-		fwrite($file, "\n" . $str);
-		fclose($file);
-}
-
-
+Debug("begin process");
 $wechatObj = new wechatCallbackapiTest();
 //$wechatObj->log("before");
 $wechatObj->valid();
@@ -39,7 +31,7 @@ class wechatCallbackapiTest
 
     public function responseMsg()
     {
-		MyLog("responseMsg");
+		Debug( __FUNCTION__);
 		//get post data, May be due to the different environments
 		$postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
 
