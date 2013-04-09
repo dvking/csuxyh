@@ -1,5 +1,6 @@
 <?php
-require_once dirname(__FILE__) . "/common.php";
+require_once dirname(__FILE__) . "/common/global.php";
+require_once dirname(__FILE__) . "/common/globalfunc.php";
 require_once dirname(__FILE__) . "/class/NewsHelper.php";
 require_once dirname(__FILE__) . "/common/MiniLog.php";
 
@@ -11,6 +12,7 @@ require_once dirname(__FILE__) . "/common/MiniLog.php";
 class CSUXYH{
 	private $postObj;
 	public function __construct($obj){
+		Debug(__FILE__);
 		$this->postObj = $obj;
 	}
 	
@@ -19,7 +21,6 @@ class CSUXYH{
 		$obj = $this->postObj;
 		$msgtyp = $obj->MsgType;
 		$ret = "";
-		MyLog("msgtyp:" . $msgtyp);
 		switch($msgtyp){
 			case "text":
 				$ret = $this->handleMsgText($obj);
@@ -33,7 +34,7 @@ class CSUXYH{
 			default:
 				$ret = "";
 		}
-		echo $ret  ;
+		return $ret  ;
 	}
 	
 	public function handleMsgOther($obj){

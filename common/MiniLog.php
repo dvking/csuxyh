@@ -42,10 +42,10 @@ class MiniLog {
 				. "]:" . $msg . "\n");
 	}
 	
-	private function __destruct(){
+	function __destruct(){
 		foreach($this->_handler as $key => $value){
 			if($value){
-				close($value);
+				fclose($value);
 			}
 		}
 	}
