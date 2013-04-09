@@ -57,8 +57,12 @@ class Mysqldb {
 			mysqli_close ( $this->_link );
 		}
 	}
-// 执行SQL查询
-//$sql 查询sql语句
+
+	/**
+	 * 执行SQL查询
+	 * @param $sql 查询sql语句
+	 * @return resource $rs 查询结果资源句柄
+	 */
 public	function query($sql)
 	{
 		if(!$link||$this->ping($link))
