@@ -1,32 +1,32 @@
 <?php
 define("TOKEN", "testfrowczhemenan");
-define("MAINLIST","---------------\n1.»Ø¸´crr·¢²¼»î¶¯ÐÅÏ¢\n2.»Ø¸´chh²éÑ¯»î¶¯ÐÅÏ¢\n");
-define("GUANZHUNOTE","ÖÐÄÏ´óÑ§Ð£ÓÑ»á»¶Ó­Äú£¡ÖÐÄÏ´óÑ§Ð£ÓÑ»áÎªÉîÛÚµØÇøÐ£ÓÑÌá¹©»î¶¯¡¢½»ÓÑÐÅÏ¢¡£¸ÐÐ»ÄúµÄ²ÎÓë£¡\n" . MAINLIST);
+define("MAINLIST","---------------\n1.å›žå¤crrå‘å¸ƒæ´»åŠ¨ä¿¡æ¯\n2.å›žå¤chhæŸ¥è¯¢æ´»åŠ¨ä¿¡æ¯\n");
+define("GUANZHUNOTE","ä¸­å—å¤§å­¦æ ¡å‹ä¼šæ¬¢è¿Žæ‚¨ï¼ä¸­å—å¤§å­¦æ ¡å‹ä¼šä¸ºæ·±åœ³åœ°åŒºæ ¡å‹æä¾›æ´»åŠ¨ã€äº¤å‹ä¿¡æ¯ã€‚æ„Ÿè°¢æ‚¨çš„å‚ä¸Žï¼\n" . MAINLIST);
 define("DEBUG","debug");
 
-//²Ëµ¥Ïî
-define("TITLE1","·¢²¼»î¶¯");
-define("DES1","·¢²¼»î¶¯ÐÅÏ¢");
+//èœå•é¡¹
+define("TITLE1","å‘å¸ƒæ´»åŠ¨");
+define("DES1","å‘å¸ƒæ´»åŠ¨ä¿¡æ¯");
 define("PICURL1","http://www.likemeili.com/wx/test/img/pic1.jpg");
 define("URL1","http://www.likemeili.com/wx/test/img/pic1.jpg?user=%s");
 
-define("TITLE2","²éÑ¯»î¶¯¡¢±¨Ãû»î¶¯");
-define("DES2","·¢²¼»î¶¯ÐÅÏ¢");
+define("TITLE2","æŸ¥è¯¢æ´»åŠ¨ã€æŠ¥åæ´»åŠ¨");
+define("DES2","å‘å¸ƒæ´»åŠ¨ä¿¡æ¯");
 define("PICURL2","http://www.likemeili.com/wx/test/img/pic2.jpg");
 define("URL2","http://www.likemeili.com/wx/test/viewfri.html?user=%s");
 
-define("TITLE3","·¢²¼»î¶¯");
-define("DES3","·¢²¼»î¶¯ÐÅÏ¢");
+define("TITLE3","å‘å¸ƒæ´»åŠ¨");
+define("DES3","å‘å¸ƒæ´»åŠ¨ä¿¡æ¯");
 define("PICURL3","http://www.likemeili.com/wx/test/img/pic2.jpg");
 define("URL3","http://www.likemeili.com/wx/test/viewfri.html?user=%s");
 
-define("TITLE4","·¢²¼»î¶¯");
-define("DES4","·¢²¼»î¶¯ÐÅÏ¢");
+define("TITLE4","å‘å¸ƒæ´»åŠ¨");
+define("DES4","å‘å¸ƒæ´»åŠ¨ä¿¡æ¯");
 define("PICURL4","http://www.likemeili.com/wx/test/img/pic2.jpg");
 define("URL4","http://www.likemeili.com/wx/test/viewfri.html?user=%s");
 
-define("TITLE5","·¢²¼»î¶¯");
-define("DES5","·¢²¼»î¶¯ÐÅÏ¢");
+define("TITLE5","å‘å¸ƒæ´»åŠ¨");
+define("DES5","å‘å¸ƒæ´»åŠ¨ä¿¡æ¯");
 define("PICURL5","http://www.likemeili.com/wx/test/img/pic2.jpg");
 define("URL5","http://www.likemeili.com/wx/test/viewfri.html?user=%s");
 
@@ -59,30 +59,15 @@ define("ITEMTPL","	<item>
 					</item>");
 
 
-//Êý¾Ý¿âÁ¬½Ó
+//æ•°æ®åº“è¿žæŽ¥
 $SQLCONN = array(
 		'CSUXYH' => array(
-				'HOST' => '199.193.255.110',
+				'HOST' => '127.0.0.1',
 				'DBNAME' => 'csuxyh',
 				'USER' => 'pkkqkk',
 				'PASSWD' => '789uioJKL',
 				'PORT' => 3306
 		)
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
