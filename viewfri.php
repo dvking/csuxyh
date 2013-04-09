@@ -8,5 +8,5 @@ $rs = $dbo->query($sql);
 $array = $dbo->fetch($rs);
 Debug($array[1][1]);
 
-//dvking
+//dvking test
 ?>
