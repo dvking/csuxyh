@@ -2,7 +2,7 @@
 include_once dirname(__FILE__) . '/Mysqldb.php';
 /**
  * 
- * Dbµ¥¼þÀà
+ * Dbï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *   @author pacozhong
  *
  */
@@ -15,6 +15,7 @@ class DbFactory {
             $newdb = new Mysqldb($dbKey);
             if ($newdb->connect()) {
                 self::$db[$dbKey] = $newdb;
+                Debug("connect test");
                 return $newdb;
             } else {
                 return false;

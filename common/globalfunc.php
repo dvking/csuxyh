@@ -6,12 +6,12 @@ function Debug($msg){
 	$log->log(DEBUG, $msg);
 }
 /**
-     * ת����Ҫ������߸��µ��ֶ�ֵ
+     * 转义需要插入或者更新的字段值
      *
-     * �����в�ѯ�͸��µ��ֶα�������Ҫ���ô˷�����������
+     * 在所有查询和更新的字段变量都需要调用此方法处理数据
      *
-     * @param mixed $str ��Ҫ�����ı���
-     * @return mixed ����ת���Ľ��
+     * @param mixed $str 需要处理的变量
+     * @return mixed 返回转义后的结果
      */
    function escape($str) {
         if (is_array($str)) {

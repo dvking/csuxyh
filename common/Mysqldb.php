@@ -8,22 +8,23 @@ require_once dirname(__FILE__) . '/globalfunc.php';
  */
 class Mysqldb {
 	
-	const  DB_FETCH_ASSOC =  MYSQLI_ASSOC;  //·µ»ØµÄÊı¾İÁĞÊ¹ÓÃ×Ö¶ÎÃû×÷ÎªÊı×éµÄË÷ÒıÃû¡£
-	const  DB_FETCH_NUM = MYSQL_NUM;          //·µ»ØµÄÊı¾İÁĞÊ¹ÓÃÊı×ÖË÷Òı×÷ÎªÊı×éµÄË÷ÒıÃû,Ë÷Òı´Ó 0 ¿ªÊ¼¡£
-	const  DB_FETCH_BOTH = MYSQL_BOTH;        //·µ»ØµÄÊı¾İÁĞÊ¹ÓÃ×Ö¶ÎÃû¼°Êı×ÖË÷Òı×÷ÎªÊı×éµÄË÷ÒıÃû¡£
-	const  DB_FETCH_DEFAULT = self::DB_FETCH_ASSOC; //Ä¬ÈÏ²ÉÓÃ×Ö¶ÎÃû·½Ê½·µ»Ø
+	const  DB_FETCH_ASSOC =  MYSQLI_ASSOC;  //è¿”å›çš„æ•°æ®åˆ—ä½¿ç”¨å­—æ®µåä½œä¸ºæ•°ç»„çš„ç´¢å¼•åã€‚
+	const  DB_FETCH_NUM = MYSQL_NUM;          //è¿”å›çš„æ•°æ®åˆ—ä½¿ç”¨æ•°å­—ç´¢å¼•ä½œä¸ºæ•°ç»„çš„ç´¢å¼•å,ç´¢å¼•ä» 0 å¼€å§‹ã€‚
+	const  DB_FETCH_BOTH = MYSQL_BOTH;        //è¿”å›çš„æ•°æ®åˆ—ä½¿ç”¨å­—æ®µååŠæ•°å­—ç´¢å¼•ä½œä¸ºæ•°ç»„çš„ç´¢å¼•åã€‚
+	const  DB_FETCH_DEFAULT = self::DB_FETCH_ASSOC; //é»˜è®¤é‡‡ç”¨å­—æ®µåæ–¹å¼è¿”å›
 					
     private $_dbKey;		
     private $_link;		
     private $_fecthMode;
     
-    //¹¹Ôìº¯Êı³õÊ¼»¯Á¬½ÓÊı¾İ
+    //æ„é€ å‡½æ•°åˆå§‹åŒ–è¿æ¥æ•°æ®
 	public function  __construct($dbKey , $fetchMode = DB_FETCH_DEFAULT){
+		
 		$this->_dbKey = $SQLCONN[$dbKey];
 		$this->_fecthMode = $fetchMode;
 	}
 	
-	//Á¬½ÓÊı¾İ¿â
+	//è¿æ¥æ•°æ®åº“
 	public function connect() {
 		$dbHost = $this->_dbKey['HOST'];
 		$dbName = $this->_dbKey['DBNAME'];
@@ -50,7 +51,7 @@ class Mysqldb {
 		return true;
 	}
 	
-// 	¹Ø±ÕÊı¾İ¿â
+// 	å…³é—­æ•°æ®åº“
 	public function close()
 	{
 		if (is_object ( $this->_link )) {
@@ -59,9 +60,9 @@ class Mysqldb {
 	}
 
 	/**
-	 * Ö´ĞĞSQL²éÑ¯
-	 * @param $sql ²éÑ¯sqlÓï¾ä
-	 * @return resource $rs ²éÑ¯½á¹û×ÊÔ´¾ä±ú
+	 * æ‰§è¡ŒSQLæŸ¥è¯¢
+	 * @param $sql æŸ¥è¯¢sqlè¯­å¥
+	 * @return resource $rs æŸ¥è¯¢ç»“æœèµ„æºå¥æŸ„
 	 */
 public	function query($sql)
 	{
@@ -81,10 +82,10 @@ public	function query($sql)
 		}
 	}
 	/**
-	 * »ñÈ¡½á¹û¼¯
-	 * @param resource $rs ²éÑ¯½á¹û×ÊÔ´¾ä±ú
-	 * @param const $fetchMode ·µ»ØµÄÊı¾İ¸ñÊ½
-	 * @return array ·µ»ØÊı¾İ¼¯Ã¿Ò»ĞĞ£¬²¢½«$rsÖ¸ÕëÏÂÒÆ
+	 * è·å–ç»“æœé›†
+	 * @param resource $rs æŸ¥è¯¢ç»“æœèµ„æºå¥æŸ„
+	 * @param const $fetchMode è¿”å›çš„æ•°æ®æ ¼å¼
+	 * @return array è¿”å›æ•°æ®é›†æ¯ä¸€è¡Œï¼Œå¹¶å°†$rsæŒ‡é’ˆä¸‹ç§»
 	 */
 	function fetch($rs, $fetchMode = self::DB_FETCH_DEFAULT)
 	{
@@ -114,10 +115,10 @@ public	function query($sql)
     	}
 	}
     /**
-     * Ö´ĞĞÒ»¸öSQL¸üĞÂ
-     * ±¾·½·¨½öÏŞÊı¾İ¿âUPDATE²Ù×÷
+     * æ‰§è¡Œä¸€ä¸ªSQLæ›´æ–°
+     * æœ¬æ–¹æ³•ä»…é™æ•°æ®åº“UPDATEæ“ä½œ
      *
-     * @param string $sql Êı¾İ¿â¸üĞÂSQLÓï¾ä
+     * @param string $sql æ•°æ®åº“æ›´æ–°SQLè¯­å¥
      * @return boolean
      */
     public function update($sql) {
